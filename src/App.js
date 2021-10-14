@@ -49,12 +49,26 @@ function Model(props) {
 
   console.log(props)
 
+  const cameraDim = {
+    width: 120,
+    height: 60
+  };
+
   return (
     <>
-      <orthographicCamera ref={targetCamera} args={[-20, 20, 20, -20]} />
+      <orthographicCamera
+        ref={targetCamera}
+        args={[
+          -cameraDim.width/2, cameraDim.width/2,
+          cameraDim.height/2, -cameraDim.height/2
+        ]}
+      />
       {createPortal(
         (
-          <VideoMesh video={props.video} />
+          <VideoMesh
+            video={props.video}
+            cameraDimensions={cameraDim}
+          />
         ), virtualScene)}
       <group ref={group} {...props} dispose={null}>
         <mesh
@@ -70,10 +84,6 @@ function Model(props) {
             rotation={[-Math.PI, 0, -Math.PI / 2]}
             material-color="#808080"
           />
-        {
-
-
-        }
           <mesh geometry={nodes.Slice.geometry}>
             <meshBasicMaterial transparent opacity={0.5} color="#60a0ff" toneMapped={false} />
             <Text

@@ -6,7 +6,11 @@ import './styles.css'
 import {videoById, videoByURL} from "./video/VideoElement"
 
 const oldVideo = videoById("pepevid");
-const newVideo = videoByURL("/MANDALA_1.mp4");
+
+
+const newVideo = videoByURL("/movies/MANDALA_1.mp4");
+
+// const newVideo = videoByURL("/movies/mov_bbb.mp4");
 
 console.log(newVideo);
 
